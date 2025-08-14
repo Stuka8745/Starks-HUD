@@ -42,21 +42,4 @@ For suggestions, feedback, or support, contact **Stuka** via Discord: `stuka1808
 
 ---
 
-## License
-
-**Garry's Mod Addon Fair Use License (GMA-FUL) v1.0**  
-
-© Stuka (Discord: stuka1808) – All Rights Reserved  
-
-Permission is granted to use this addon on your server, with the following restrictions:  
-
-1. The Software may not be sold, redistributed for profit, or rebranded.  
-2. Large portions of code may not be copied into other projects.  
-3. Modifications that substantially change the core functionality cannot be distributed.  
-4. Small code snippets may be used for educational or inspirational purposes with credit to the original author.  
-
-Violation of any term terminates the granted rights. The Software is provided “as is” without warranty of any kind.
-
----
-
 **Note:** This is a beta release. Features may change in future versions.
