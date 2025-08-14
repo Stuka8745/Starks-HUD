@@ -15,26 +15,31 @@ surface.CreateFont("StarksFontHUD", {
     size = 32,
     weight = 600,
 })
+
 surface.CreateFont("StarksFontAgenda", {
     font = "Quicksand Light",
     size = 18,
     weight = 800,
 })
+
 surface.CreateFont("StarksFontOverHead", {
 font = "Quicksand Light",
 size = 22,
 weight = 800,
 })
+
 surface.CreateFont("StarksFontAmmo", {
     font = "Quicksand Light",
     size = 50,
     weight = 800,
 })
+
 surface.CreateFont("StarksHUDNotif", {
     font = "Quicksand Light",
     size = 22,
     weight = 800,
 })
+
 surface.CreateFont("StarksHUDNotifProgress", {
     font = "Quicksand Light",
     size = 16,

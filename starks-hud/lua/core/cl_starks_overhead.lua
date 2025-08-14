@@ -7,8 +7,6 @@
 
 Made by:      Stuka
 Discord:      stuka1808
-Some parts of this script contain snippets from:
-OverlordAkise - https://github.com/OverlordAkise
 --]]
 
 if not ENABLE_OVERHEAD_HUD then return end

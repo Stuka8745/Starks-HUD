@@ -7,14 +7,11 @@
 
 Made by:      Stuka
 Discord:      stuka1808
-Some parts of this script contain snippets from:
-OverlordAkise - https://github.com/OverlordAkise
 --]]
 
 local color_white = Color(255, 255, 255)
 local notifBoxCol = Color(40,40,40)
 
--- Magic numbers replaced with named constants
 local NOTIF_START_X = 0
 local NOTIF_START_Y = 200
 local NOTIF_WIDTH_PADDING = 20

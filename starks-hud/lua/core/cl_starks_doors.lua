@@ -1,3 +1,14 @@
+--[[
+  ____ _____  _    ____  _  ______    _   _ _   _ ____  
+ / ___|_   _|/ \  |  _ \| |/ / ___|  | | | | | | |  _ \ 
+ \___ \ | | / _ \ | |_) | ' /\___ \  | |_| | | | | | | |
+  ___) || |/ ___ \|  _ <| . \ ___) | |  _  | |_| | |_| |
+ |____/ |_/_/   \_|_| \_|_|\_|____/  |_| |_|\___/|____/ 
+
+Made by:      Stuka
+Discord:      stuka1808
+--]]
+
 local starks_door_cfg = {
 	boxColor = Color(40, 40, 40, 230),
 	borderColor = Color(54, 57, 62, 255),
@@ -50,7 +61,6 @@ local function starks_DrawDoorHUD(door)
 	local info = starks_GetDoorInfo(door)
 	if not info then return end
 
-	-- Always place HUD on the side facing the player
 	local obbCenter = door:OBBCenter()
 	local doorForward = door:GetForward()
 	local doorUp = door:GetUp()
@@ -67,9 +77,7 @@ local function starks_DrawDoorHUD(door)
 	ang:RotateAroundAxis(ang:Up(), 90)
 
 	cam.Start3D2D(pos, ang, 0.15)
-		-- Header box (NO_BL + NO_BR)
 		RNDX.Draw(8, -starks_door_cfg.boxWidth/2, 0, starks_door_cfg.boxWidth, starks_door_cfg.headerHeight, starks_door_cfg.headerColor, RNDX.NO_BL + RNDX.NO_BR)
-		-- Main box (NO_TL + NO_TR)
 		RNDX.Draw(8, -starks_door_cfg.boxWidth/2, starks_door_cfg.headerHeight, starks_door_cfg.boxWidth, starks_door_cfg.boxHeight - starks_door_cfg.headerHeight, starks_door_cfg.boxColor, RNDX.NO_TL + RNDX.NO_TR)
 		draw.SimpleText("DOOR", starks_door_cfg.fontHeader, 0, starks_door_cfg.headerHeight/2, starks_door_cfg.textColor, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 
@@ -147,17 +155,13 @@ local function starks_OpenDoorMenu(setDoorOwnerAccess, doorSettingsAccess)
 	Frame:ParentToHUD()
 	Frame:SetTitle("")
 	function Frame:Paint(w,h)
-		-- Header box (NO_BL + NO_BR)
 		RNDX.Draw(8, 0, 0, w, 38, starks_door_cfg.headerColor, RNDX.NO_BL + RNDX.NO_BR)
-		-- Main box (NO_TL + NO_TR)
 		RNDX.Draw(8, 0, 38, w, h-38, starks_door_cfg.boxColor, RNDX.NO_TL + RNDX.NO_TR)
 		draw.SimpleText("DOOR MENU", starks_door_cfg.fontHeader, w/2, 19, starks_door_cfg.textColor, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
-		-- Draw close button placeholder
 		draw.SimpleText("X", starks_door_cfg.fontHeader, w-25, 19, Color(255,0,0), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 	end
 
 	function Frame:Think()
-		-- Don't close the menu if the console is open
 		if gui.IsConsoleVisible and gui.IsConsoleVisible() then return end
 		local tr = LocalPlayer():GetEyeTrace()
 		local LAEnt = tr.Entity
@@ -316,15 +320,14 @@ hook.Add("PlayerButtonDown", "Starks_DoorMenu_F2", function(ply, btn)
 		CAMI.PlayerHasAccess(LocalPlayer(), "DarkRP_SetDoorOwner", function(setDoorOwnerAccess)
 			CAMI.PlayerHasAccess(LocalPlayer(), "DarkRP_ChangeDoorSettings", fp{starks_OpenDoorMenu, setDoorOwnerAccess})
 		end)
-		return true -- block default
+		return true 
 	end
 end)
 
 hook.Add("HUDDrawDoorData", "starks_doorhud_disable_default", function(ent)
-	return true -- block default
+	return true 
 end)
 
--- Overwrite DarkRP.openKeysMenu to use our menu
 hook.Add("PostGamemodeLoaded", "Starks_OverrideKeysMenu", function()
 	function DarkRP.openKeysMenu(um)
 		CAMI.PlayerHasAccess(LocalPlayer(), "DarkRP_SetDoorOwner", function(setDoorOwnerAccess)
